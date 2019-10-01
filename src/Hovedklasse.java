@@ -74,6 +74,7 @@ public class Hovedklasse {
         System.out.println(liste2.subliste(5,5)); // []
         System.out.println(liste2.subliste(8,liste2.antall())); // [I, J]
         System.out.println(liste2.subliste(9,10));
+        System.out.println(liste2.subliste(0,11)); //Kaster unntak
 
         System.out.println(liste2.hent(0));
 
@@ -83,6 +84,8 @@ public class Hovedklasse {
         DobbeltLenketListe<Integer> liste3 = new DobbeltLenketListe<>(d);
 
         System.out.println(liste3.hent(0));
+
+
 
 
     }
