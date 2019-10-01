@@ -489,6 +489,7 @@ class DobbeltLenketListeTest {
                 antallFeil++;
             }
         }
+
     }
 
     ////// Oppgave 4 /////////////////////
