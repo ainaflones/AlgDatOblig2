@@ -81,6 +81,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         this.hode=null;
         this.hale=null;
         antall=0;
+        endringer=0;
     }
 
     public DobbeltLenketListe(T[] a) {
@@ -110,6 +111,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                         temp.neste = node;
                         temp = temp.neste;
                         antall++;
+                        endringer++;
                     }
 
                 }
@@ -226,6 +228,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         Node<T> node = finnNode(indeks);
         T verdi = node.verdi;
         node.verdi=nyverdi;
+        endringer++;
 
 
         return verdi;
