@@ -220,7 +220,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 endringer++;
             } else {
                 Node<T> p = hode;
-                for (int i = 1; i < indeks; i++) p = p.neste;
+                for (int i = 0; i < indeks; i++) {
+                    p = p.neste;
+                }
                 Node<T> q = p.forrige;
                 Node<T> node = new Node<>(verdi, p.forrige, p);
                 p.forrige = node;
