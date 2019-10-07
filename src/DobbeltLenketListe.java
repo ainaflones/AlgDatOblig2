@@ -201,7 +201,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean inneholder(T verdi) {
-        throw new NotImplementedException();
+
+        /**
+         * Oppgave 4
+         */
+
+        return indeksTil(verdi) !=-1;
+
     }
 
     @Override
@@ -216,7 +222,26 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int indeksTil(T verdi) {
-        throw new NotImplementedException();
+
+        /**
+         * Oppgave 4
+         */
+
+        if(verdi == null){
+            return -1;
+        }
+
+        Node <T> temp = hode;
+
+        for(int i = 0; i<antall; i++){
+            if(temp.verdi.equals(verdi)){
+                return i;
+            }
+            temp=temp.neste;
+        }
+        return -1;
+
+
     }
 
     @Override
