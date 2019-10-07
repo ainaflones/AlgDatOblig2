@@ -260,14 +260,68 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     }
 
+
+    //Oppgave 6
+
     @Override
     public boolean fjern(T verdi) {
-        throw new NotImplementedException();
+        if (verdi == null) return false;
+
+        Node<T> q = hode, p = null, r = null;
+
+        while (q != null) {
+            if (q.verdi.equals(verdi)) break;
+            p = q;
+            q = q.neste;
+            if (q != null) r = q.neste;
+        }
+
+        if (q == null) return false;
+        else if (q == hode) {
+            hode = hode.neste;
+        } else {
+            p.neste = q.neste;
+            if (r != null) r.forrige = p;
+        }
+
+        if (q == hale) {
+            hale = p;
+        }
+
+        q.verdi = null;
+        q.neste = null;
+
+        antall--;
+
+        return true;
     }
 
     @Override
     public T fjern(int indeks) {
-        throw new NotImplementedException();
+        indeksKontroll(indeks, false);
+
+        T temp;
+
+        if (indeks == 0) {
+            temp = hode.verdi;
+            hode = hode.neste;
+            if (antall == 1) hale = null;
+        } else {
+            Node<T> p = finnNode(indeks - 1);
+            Node<T> q = p.neste;
+            Node<T> r = q.neste;
+            temp = q.verdi;
+
+            if (q == hale) hale = p;
+
+
+            p.neste = q.neste;
+            if (r != null) r.forrige = p;
+
+        }
+
+        antall--;
+        return temp;
     }
 
     @Override
