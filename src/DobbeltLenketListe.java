@@ -324,9 +324,50 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         return temp;
     }
 
+    /**
+     * Oppgave 7
+     */
+
+    // 2. måte er valgt fordi når liste inneholder 1000000 elementer, tok 1. måte 21 millisekunder til å kjøre,
+    // og 2. måte tok 12 millisekunder til å kjøre
+
+    // 1. måte:
+/*    @Override
+    public void nullstill() {
+        long tid = System.currentTimeMillis();
+
+        Node<T> p = hode;
+        Node<T> q = null;
+
+        while (p != null) {
+            q = p.neste;  // moving the q-point to p.neste
+
+            p.neste = null; // nullstill p
+            p.verdi = null;
+            p.forrige = null;
+
+            p = q; // moving the p-pointer to q (p.neste)
+        }
+
+        hode = hale = null;
+        antall = 0;
+
+        tid = System.currentTimeMillis() - tid;
+        System.out.println(tid);
+    }*/
+
+    // 2. måte:
     @Override
     public void nullstill() {
-        throw new NotImplementedException();
+        long tid = System.currentTimeMillis();
+
+        int antallGanger = antall;
+        for(int i = 0; i < antallGanger; i++){
+            fjern(0);
+        }
+
+        tid = System.currentTimeMillis() - tid;
+        System.out.println(tid);
     }
 
     @Override
