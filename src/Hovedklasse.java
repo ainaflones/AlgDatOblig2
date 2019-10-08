@@ -100,6 +100,21 @@ public class Hovedklasse {
         for (String s : liste) System.out.print(s + " ");
 
 
+        System.out.println();
+
+        /**
+        * Test oppgave 8
+         */
+
+
+        liste.fjernHvis(navn2 -> navn2.charAt(0) =='B');// fjerner navn som starter med B
+        System.out.println(liste + "​ ​" + ((DobbeltLenketListe<String>) liste).omvendtString());
+
+        Liste<String> liste2 = new DobbeltLenketListe<>(navn);
+        liste2.fjernHvis(navn3 -> navn3.length() != 5);
+        System.out.println(liste2 + "​ ​" + ((DobbeltLenketListe<String>) liste2).omvendtString());
+
+
 
 
 

@@ -563,6 +563,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public void remove(){
+
+            if(iteratorendringer!=endringer){
+                throw new ConcurrentModificationException("Listen er endret!");
+            }
+
             if (!fjernOK) throw new IllegalStateException("Ulovlig tilstand!");
 
             fjernOK = false;
@@ -570,15 +575,23 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
             if (hode.neste == denne) {
                 hode = hode.neste;
+                if (hode != null) hode.forrige = null;
+
                 if (denne == null) hale = null;
             } else {
                 Node<T> r = hode;
+
                 while (r.neste.neste != denne) {
                     r = r.neste;
                 }
+
                 q = r.neste;
                 r.neste = denne;
-                if (denne == null) hale = r;
+                if (denne != null){
+                    denne.forrige = r;
+                } else {
+                    hale = r;
+                }
             }
             q.verdi = null;
             q.neste = null;
