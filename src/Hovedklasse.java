@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class Hovedklasse {
 
     public static void main(String args[] ){
@@ -103,7 +105,7 @@ public class Hovedklasse {
         System.out.println();
 
         /**
-        * Test oppgave 8
+        * Test oppgave 9
          */
 
 
@@ -114,7 +116,12 @@ public class Hovedklasse {
         liste2.fjernHvis(navn3 -> navn3.length() != 5);
         System.out.println(liste2 + "​ ​" + ((DobbeltLenketListe<String>) liste2).omvendtString());
 
-
+        /**
+         * Test oppgave 10
+         */
+        Liste<String> liste3 = new DobbeltLenketListe<>(navn);
+        DobbeltLenketListe.sorter(liste3, Comparator.naturalOrder());
+        System.out.println(liste3);
 
 
 

@@ -609,7 +609,26 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     } // class DobbeltLenketListeIterator
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-        throw new NotImplementedException();
+
+        if(liste.antall()>1){
+            int antallIterasjon = liste.antall();
+
+            for(int i = 0; i < antallIterasjon-1; i++){
+                int min = i;
+                for(int j = i+1; j <antallIterasjon; j++){
+                    if (c.compare(liste.hent(min), liste.hent(j)) > 0){
+                        min = j;
+                    }
+                }
+                if(min == i){}
+                else{
+                    T temp = liste.hent(min);
+                    liste.fjern(min);
+                    liste.leggInn(i,temp);
+                }
+            }
+        }
+
     }
 
 
