@@ -463,11 +463,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return tekst.toString();
         }
 
-        Node temp = hale.forrige;
+        Node<T> temp = hale.forrige;
 
         tekst.append("[").append(hale.verdi).append(", ");
 
-        while(temp.verdi != null && temp != hode){
+        while(temp.forrige != null && temp != hode){
             tekst.append(temp.verdi).append(", ");
             temp=temp.forrige;
         }
