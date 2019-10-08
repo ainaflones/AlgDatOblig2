@@ -305,15 +305,15 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         while (q != null) {
             if (q.verdi.equals(verdi)) break;
-            p = q;
             q = q.neste;
-            if (q != null) r = q.neste;
         }
 
         if (q == null) return false;
         else if (q == hode) {
             hode = hode.neste;
         } else {
+            p = q.forrige;
+            r = q.neste;
             p.neste = q.neste;
             if (r != null) r.forrige = p;
         }
@@ -344,7 +344,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         } else {
             Node<T> p = finnNode(indeks - 1);
             Node<T> q = p.neste;
-            Node<T> r = q.neste;
+            Node<T> r = null;
+            if(q != null) r = q.neste;
+
             temp = q.verdi;
 
             if (q == hale) hale = p;
