@@ -561,7 +561,27 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public void remove(){
-            throw new NotImplementedException();
+            if (!fjernOK) throw new IllegalStateException("Ulovlig tilstand!");
+
+            fjernOK = false;
+            Node<T> q = hode;
+
+            if (hode.neste == denne) {
+                hode = hode.neste;
+                if (denne == null) hale = null;
+            } else {
+                Node<T> r = hode;
+                while (r.neste.neste != denne) {
+                    r = r.neste;
+                }
+                q = r.neste;
+                r.neste = denne;
+                if (denne == null) hale = r;
+            }
+            q.verdi = null;
+            q.neste = null;
+
+            antall--;
         }
 
         Iterator<T> iterator(){
