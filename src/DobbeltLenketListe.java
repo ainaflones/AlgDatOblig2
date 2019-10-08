@@ -580,8 +580,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
             q.verdi = null;
             q.neste = null;
+            q.forrige = null;
 
             antall--;
+            endringer++;
+            iteratorendringer++;
         }
 
         Iterator<T> iterator(){
