@@ -1171,6 +1171,7 @@ class DobbeltLenketListeTest {
             }
         }
 
+
         if (liste.antall() != 6) {
             antallFeil++;
             System.out.println

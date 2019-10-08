@@ -100,6 +100,9 @@ public class Hovedklasse {
         for (String s : liste) System.out.print(s + " ");
 
 
+
+
+
     }
 
 
