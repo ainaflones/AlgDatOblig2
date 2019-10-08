@@ -611,11 +611,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
 
         if(liste.antall()>1){
-            int antallIterasjon = liste.antall();
+            int antall = liste.antall();
 
-            for(int i = 0; i < antallIterasjon-1; i++){
+            for(int i = 0; i < antall-1; i++){
                 int min = i;
-                for(int j = i+1; j <antallIterasjon; j++){
+                for(int j = i+1; j <antall; j++){
                     if (c.compare(liste.hent(min), liste.hent(j)) > 0){
                         min = j;
                     }
