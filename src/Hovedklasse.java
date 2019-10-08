@@ -54,6 +54,8 @@ public class Hovedklasse {
  * Tester oppgave 3
  */
 
+/*
+
         Integer[] liste = {1,2,3,4,5,6};
 
         Liste<Integer> nodeListe = new DobbeltLenketListe<Integer>(liste);
@@ -85,7 +87,17 @@ public class Hovedklasse {
 
         System.out.println(liste3.hent(0));
 
+*/
+        /**
+         * Test oppgave 8
+         */
 
+        String[] navn = {"Lars","Anders","Bodil","Kari","Per","Berit"};
+        Liste<String> liste = new DobbeltLenketListe<>(navn);
+
+        liste.forEach(s -> System.out.print(s + " "));
+        System.out.println();
+        for (String s : liste) System.out.print(s + " ");
 
 
     }

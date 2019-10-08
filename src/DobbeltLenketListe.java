@@ -326,6 +326,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         q.neste = null;
 
         antall--;
+        endringer++;
 
         return true;
     }
@@ -360,6 +361,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         antall--;
+        endringer++;
         return temp;
     }
 
@@ -407,6 +409,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         tid = System.currentTimeMillis() - tid;
         System.out.println(tid);
+
+        endringer++;
     }
 
     @Override
@@ -491,11 +495,15 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public Iterator<T> iterator() {
-        throw new NotImplementedException();
+        return new DobbeltLenketListeIterator();
     }
 
     public Iterator<T> iterator(int indeks) {
-        throw new NotImplementedException();
+
+        indeksKontroll(indeks,false);
+
+        return new DobbeltLenketListeIterator(indeks);
+
     }
 
     private class DobbeltLenketListeIterator implements Iterator<T>
@@ -505,26 +513,59 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         private int iteratorendringer;
 
         private DobbeltLenketListeIterator(){
-            throw new NotImplementedException();
+
+            denne = hode;
+            fjernOK = false;
+            iteratorendringer = endringer;
+
         }
 
         private DobbeltLenketListeIterator(int indeks){
-            throw new NotImplementedException();
+
+            denne = hode;
+
+            for(int i = 0; i<indeks; i++){
+                denne= denne.neste;
+            }
+            fjernOK = false;
+            iteratorendringer = endringer;
         }
 
         @Override
         public boolean hasNext(){
-            throw new NotImplementedException();
+
+            return denne != null;
+
         }
 
         @Override
         public T next(){
-            throw new NotImplementedException();
+            /**
+             * Oppgave 8a)
+             */
+
+            if(iteratorendringer!=endringer){
+                throw new ConcurrentModificationException("Det har blitt gjort endringer på tabellen med en annen iterator");
+            }
+            if(!hasNext()){
+                throw new NoSuchElementException("Det er ikke flere elementer igjen i listen");
+            }
+
+            fjernOK = true;
+            T tempVerdi = denne.verdi;
+            denne = denne.neste;
+            return tempVerdi;
+
+
         }
 
         @Override
         public void remove(){
             throw new NotImplementedException();
+        }
+
+        Iterator<T> iterator(){
+            return new DobbeltLenketListeIterator();
         }
 
     } // class DobbeltLenketListeIterator
