@@ -429,8 +429,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return "[]";
         }
         else if(antall == 1){
-            tekst.append("[").append(hode.verdi).append("]");
-            return tekst.toString();
+
+            return "[" + hode.verdi+"]";
         }
 
         Node temp = hode.neste;
@@ -461,15 +461,14 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return "[]";
         }
         else if(antall == 1){
-            tekst.append("[").append(hode.verdi).append("]");
-            return tekst.toString();
+            return "[" + hode.verdi + "]";
         }
 
         Node<T> temp = hale.forrige;
 
         tekst.append("[").append(hale.verdi).append(", ");
 
-        while(temp.forrige != null && temp != hode){
+        while(temp != hode){
             tekst.append(temp.verdi).append(", ");
             temp=temp.forrige;
         }
